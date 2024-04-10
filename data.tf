@@ -4,6 +4,12 @@ data "oci_identity_availability_domains" "ads" {
   compartment_id = var.compartment_id
 }
 
+data "cloudinit_config" "this" {
+  part {
+    content = file("user-data-this.yaml")
+  }
+}
+
 /*
 data "oci_core_shape" "vm_standard3_flex_shape" {
   compartment_id = var.compartment_id

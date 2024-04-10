@@ -27,5 +27,6 @@ variable "instance_boot_volume_vpus_per_gb" {}
 
 variable "instance_vcn_id" {}
 variable "instance_subnet_id" {}
+variable "instance_ssh_public_key" {}
 
 

@@ -86,6 +86,10 @@ resource "oci_core_instance" "my_instances" {
   compartment_id      = var.compartment_id
   shape               = var.instance_shape
 
+  metadata = {
+    ssh_authorized_keys = var.instance_ssh_public_key
+    user_data           = data.cloudinit_config.this.rendered
+  }
   source_details {
     source_id   = var.instance_image_id
     source_type = "image"
@@ -99,9 +103,10 @@ resource "oci_core_instance" "my_instances" {
   }
   display_name = "my_instance_${count.index + 1}"
   create_vnic_details {
-    subnet_id        = oci_core_subnet.my_subnet.id
-    assign_public_ip = var.subnet_public_access
+    subnet_id        = var.instance_subnet_id
+//    assign_public_ip = var.subnet_public_access
   }
+
 }
 
 # Create a new block storage volume and attach it to the compute instance
