@@ -3,6 +3,7 @@ provider "oci" {
   region = var.region
 }
 
+/*
 # Create a new Virtual Cloud Network
 resource "oci_core_virtual_network" "my_vcn" {
   cidr_block     = var.vcn_cidr_block
@@ -23,6 +24,7 @@ resource "oci_core_subnet" "my_subnet" {
   prohibit_internet_ingress = var.subnet_public_access
 	prohibit_public_ip_on_vnic = var.subnet_public_access
 }
+
 
 # Create a new route table for the VCN
 resource "oci_core_route_table" "my_route_table" {
@@ -74,6 +76,8 @@ resource "oci_core_security_list" "my_security_list" {
     destination = "0.0.0.0/0"
   }
 }
+
+*/
 
 # Create a new compute instance
 resource "oci_core_instance" "my_instances" {

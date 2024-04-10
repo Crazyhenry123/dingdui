@@ -17,12 +17,15 @@ variable "instance_boot_volume_size_in_gbs" {}
 variable "instance_boot_volume_vpus_per_gb" {}
 
 # VCN Variable Group
-variable "vcn_dns_label" {}
-variable "vcn_display_name" {}
-variable "vcn_cidr_block" {}
-variable "subnet_dns_label" {}
-variable "subnet_display_name" {}
-variable "subnet_cidr_block" {}
-variable "subnet_public_access" {}
+//variable "vcn_dns_label" {}
+//variable "vcn_display_name" {}
+//variable "vcn_cidr_block" {}
+//variable "subnet_dns_label" {}
+//variable "subnet_display_name" {}
+//variable "subnet_cidr_block" {}
+//variable "subnet_public_access" {}
+
+variable "instance_vcn_id" {}
+variable "instance_subnet_id" {}
 
 
