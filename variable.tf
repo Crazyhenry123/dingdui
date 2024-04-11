@@ -8,7 +8,7 @@ variable "compartment_id" {}
 variable "instance_shape" {}
 variable "instance_image_id" {}
 variable "instance_count" {}
-variable "instance_ad" {}
+// variable "instance_ad" {}
 variable "instance_ocpu" {}
 variable "instance_mem_in_gbs" {}
 variable "instance_secvol_in_gbs" {}

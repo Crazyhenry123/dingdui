@@ -14,7 +14,7 @@ variableGroups:
   - title: Computer Instance Variable Group
     visible: true
     variables:
-      - instance_ad
+#      - instance_ad
       - instance_shape
       - instance_image_id
       - instance_count
@@ -42,11 +42,11 @@ variables:
     title: Instance Compartment Name
     description: The name of the compartment where compute instance will be created.
     required: true
-  instance_ad:
-    type: oci:identity:availabilitydomain:name
-    dependsOn:
-      compartmentId: compartment_id
-    required: true
+#  instance_ad:
+#    type: oci:identity:availabilitydomain:name
+#    dependsOn:
+#      compartmentId: compartment_id
+#    required: true
   instance_shape:
     type: oci:core:instanceshape:name
     title: "Compute Shape"
