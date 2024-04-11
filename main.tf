@@ -104,7 +104,7 @@ resource "oci_core_instance" "my_instances" {
   display_name = "my_instance_${count.index + 1}"
   create_vnic_details {
     subnet_id        = var.instance_subnet_id
-//    assign_public_ip = var.subnet_public_access
+    assign_public_ip = var.instance_vnic_create_vnic_details
   }
 
 }

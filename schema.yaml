@@ -25,6 +25,7 @@ variableGroups:
       - instance_secvol_vpus_per_gb
       - instance_boot_volume_size_in_gbs
       - instance_boot_volume_vpus_per_gb
+      - instance_vnic_create_vnic_details
   - title: VCN Variable Group
     visible: true
     variables:
@@ -106,6 +107,11 @@ variables:
     type: integer
     title: "Boot Volumn VPUS / GB"
     description: Boot volumn VPUS per GB.
+    required: true
+  instance_vnic_create_vnic_details:
+    type: boolean
+    title: "Select when creating public IP in a public subnet"
+    description: Availability to Internet.
     required: true
   instance_vcn_id: 
     type: oci:core:vcn:id

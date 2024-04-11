@@ -15,6 +15,7 @@ variable "instance_secvol_in_gbs" {}
 variable "instance_secvol_vpus_per_gb" {}
 variable "instance_boot_volume_size_in_gbs" {}
 variable "instance_boot_volume_vpus_per_gb" {}
+variable "instance_vnic_create_vnic_details"{}
 
 # VCN Variable Group
 //variable "vcn_dns_label" {}
