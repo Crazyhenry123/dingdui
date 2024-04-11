@@ -1,3 +1,5 @@
 #cloud-config
 runcmd:
-  - /usr/libexec/oci-growfs -y
+  - df -h > /tmp/output.log
+  - /usr/libexec/oci-growfs -y >> /tmp/output.log
+  - df -h >> /tmp/output.log

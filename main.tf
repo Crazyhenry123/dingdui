@@ -82,7 +82,7 @@ resource "oci_core_security_list" "my_security_list" {
 # Create a new compute instance
 resource "oci_core_instance" "my_instances" {
   count               = var.instance_count
-  availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
+  availability_domain = var.instance_ad
   compartment_id      = var.compartment_id
   shape               = var.instance_shape
 
@@ -111,7 +111,7 @@ resource "oci_core_instance" "my_instances" {
 
 # Create a new block storage volume and attach it to the compute instance
 resource "oci_core_volume" "my_volumes" {
-  availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
+  availability_domain = var.instance_ad
   count               = var.instance_count
   compartment_id      = var.compartment_id
   display_name        = "my_volume_${count.index + 1}"
