@@ -5,12 +5,14 @@ variable "region" {}
 variable "compartment_id" {}
 
 # Computer Instance Variable Group
+variable "instance_name_prefix" {}
 variable "instance_shape" {}
 variable "instance_image_id" {}
 variable "instance_count" {}
 // variable "instance_ad" {}
 variable "instance_ocpu" {}
 variable "instance_mem_in_gbs" {}
+variable "instance_has_sec_vol" {}
 variable "instance_secvol_in_gbs" {}
 variable "instance_secvol_vpus_per_gb" {}
 variable "instance_boot_volume_size_in_gbs" {}

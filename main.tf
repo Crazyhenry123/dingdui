@@ -101,7 +101,7 @@ resource "oci_core_instance" "my_instances" {
     ocpus         = var.instance_ocpu
     memory_in_gbs = var.instance_mem_in_gbs
   }
-  display_name = "my_instance_${count.index + 1}"
+  display_name = "${var.instance_name_prefix}_${count.index + 1}"
   create_vnic_details {
     subnet_id        = var.instance_subnet_id
     assign_public_ip = var.instance_vnic_create_vnic_details
@@ -112,9 +112,9 @@ resource "oci_core_instance" "my_instances" {
 # Create a new block storage volume and attach it to the compute instance
 resource "oci_core_volume" "my_volumes" {
   availability_domain = data.oci_identity_availability_domains.ads.availability_domains[count.index%length(data.oci_identity_availability_domains.ads.availability_domains)].name
-  count               = var.instance_count
+  count               = var.instance_has_sec_vol==0?0:var.instance_count
   compartment_id      = var.compartment_id
-  display_name        = "my_volume_${count.index + 1}"
+  display_name        = "${var.instance_name_prefix}_volume_${count.index + 1}"
   size_in_gbs         = var.instance_secvol_in_gbs
   vpus_per_gb         = var.instance_secvol_vpus_per_gb
 
@@ -122,7 +122,7 @@ resource "oci_core_volume" "my_volumes" {
 
 resource "oci_core_volume_attachment" "my_volume_attachments" {
   attachment_type = "paravirtualized"
-  count               = var.instance_count
+  count               = var.instance_has_sec_vol==0?0:var.instance_count
   instance_id = oci_core_instance.my_instances[count.index].id
   volume_id   = oci_core_volume.my_volumes[count.index].id
 }

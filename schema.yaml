@@ -14,6 +14,7 @@ variableGroups:
   - title: Computer Instance Variable Group
     visible: true
     variables:
+      - instance_name_prefix
 #      - instance_ad
       - instance_shape
       - instance_image_id
@@ -21,14 +22,15 @@ variableGroups:
       - instance_ssh_public_key
       - instance_ocpu
       - instance_mem_in_gbs
+      - instance_has_sec_vol
       - instance_secvol_in_gbs
       - instance_secvol_vpus_per_gb
       - instance_boot_volume_size_in_gbs
       - instance_boot_volume_vpus_per_gb
-      - instance_vnic_create_vnic_details
   - title: VCN Variable Group
     visible: true
     variables:
+      - instance_vnic_create_vnic_details
       - instance_vcn_id
       - instance_subnet_id
 
@@ -48,6 +50,12 @@ variables:
 #    dependsOn:
 #      compartmentId: compartment_id
 #    required: true
+  instance_name_prefix:
+    type: string
+    title: "Prefix for instance names."
+    required: true
+    description: "Instance names which will be appended with index."
+    default: "MyInstance"
   instance_shape:
     type: oci:core:instanceshape:name
     title: "Compute Shape"
@@ -88,6 +96,12 @@ variables:
     title: "Memory amount for instances."
     description: Amount of memory allocated for this shape.
     required: true
+  instance_has_sec_vol:
+    type: boolean
+    title: "Second volumn switch."
+    description: Specify when you need the second volumn.
+    required: true
+    default: false
   instance_secvol_in_gbs:
     type: integer
     title: "Second volumn size."
@@ -127,4 +141,4 @@ variables:
     required: true
     dependsOn: 
       compartmentId: compartment_id
-      instance_vcn_id: instance_vcn_id
+      vcnId: instance_vcn_id
